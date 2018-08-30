@@ -1,0 +1,4 @@
+#!/bin/bash -eu
+
+docker-compose exec -T cli bash -c "conjur init --force=true -u \$CONJUR_APPLIANCE_URL -a \$CONJUR_ACCOUNT"
+docker-compose exec cli bash -c "conjur authn login -u \$CONJUR_AUTHN_LOGIN"

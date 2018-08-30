@@ -1,0 +1,5 @@
+
+cli/.conjurrc
+cli/.netrc
+cli/*.pem
+.DS_Store

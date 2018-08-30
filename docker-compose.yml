@@ -1,0 +1,30 @@
+version: "3"
+services:
+  master:
+    image: registry2.itci.conjur.net/conjur-appliance:5.0-stable
+    ports:
+      - "443:443"
+    security_opt:
+        - "seccomp:unconfined"
+    volumes:
+      - certs:/opt/conjur/etc/ssl
+      - ./data:/data
+      - ~/projects/conjurinc/conjur-ui/public:/opt/conjur/ui/public
+      - ~/projects/conjurinc/conjur-ui/distrib/nginx/80_ui.conf:/etc/conjur/nginx.d/80_ui.conf
+  
+  cli:
+    image: cyberark/conjur-cli:5
+    depends_on: [ master ]
+    entrypoint: sleep
+    command: infinity
+    environment:
+      CONJUR_APPLIANCE_URL: https://master
+      CONJUR_ACCOUNT: micah
+      CONJUR_AUTHN_LOGIN: admin
+    volumes:
+      - certs:/opt/conjur/etc/ssl
+      - ./cli:/root
+      - ./data:/data
+
+volumes:
+  certs:

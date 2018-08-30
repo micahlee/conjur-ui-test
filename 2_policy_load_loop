@@ -1,0 +1,7 @@
+#!/bin/bash -eu
+
+while true; do
+  docker-compose exec -T cli bash -c "conjur policy load -r root /data/policy/policy1.yml"
+  docker-compose exec -T cli bash -c "conjur policy load -r root /data/policy/policy2.yml"
+  docker-compose exec -T cli bash -c "conjur policy load -r root /data/policy/policy3.yml"
+done

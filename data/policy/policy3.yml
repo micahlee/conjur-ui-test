@@ -1,0 +1,84 @@
+---
+- !policy
+  id: testapp
+  body:
+    - !policy
+      id: alfa--5f5ad349-58d0-4d21-b0b9-283062bd34c9
+      body:
+        # Secret Declarations
+        - &secrets1
+          - !variable hydrogen--ec202133-6783-4115-a0e4-a20c660bf45e
+          - !variable lithium--6008a775-b4d9-47a3-958d-1ebaeb6c7a45
+          - !variable sodium--ee677ec2-2d51-424d-98d8-b02d8746b17b
+        
+        # User & Manager Groups
+        - !group secrets-users
+        - !group secrets-managers
+        - !permit
+          role: !group secrets-users
+          privileges: [ read, execute ]
+          resources: *secrets1
+        - !permit
+          role: !group secrets-managers
+          privileges: [ read, execute, update ]
+          resources: *secrets1
+    - !policy
+      id: bravo--b610eceb-eec7-44e6-b1d6-e0faa45a3d10
+      body:
+        # Secret Declarations
+        - &secrets2
+          - !variable potassium--c8366862-91c5-43c3-8d3f-7687a3e9892e
+          - !variable rubidium--9bcc528c-fcb0-442f-8d27-38d98e3a906c
+          - !variable caesium--dad1b439-d072-4e7a-bc91-c9abf9ecf1e6
+        
+        # User & Manager Groups
+        - !group secrets-users
+        - !group secrets-managers
+        - !permit
+          role: !group secrets-users
+          privileges: [ read, execute ]
+          resources: *secrets2
+        - !permit
+          role: !group secrets-managers
+          privileges: [ read, execute, update ]
+          resources: *secrets2
+    - !policy
+      id: charlie--72b86565-c371-4231-aec2-43a3f22254f0
+      body:
+        # Secret Declarations
+        - &secrets3
+          - !variable francium--87aa1898-381e-4bb6-baeb-a75e1d896e1b
+          - !variable hydrogen--4942cfcc-dce3-46ff-82a8-5f9073ee949d
+          - !variable lithium--67faf35e-f271-44a6-bd2c-1906318e4ad6
+        
+        # User & Manager Groups
+        - !group secrets-users
+        - !group secrets-managers
+        - !permit
+          role: !group secrets-users
+          privileges: [ read, execute ]
+          resources: *secrets3
+        - !permit
+          role: !group secrets-managers
+          privileges: [ read, execute, update ]
+          resources: *secrets3
+    - !policy
+      id: delta--b92f52ee-a59e-4b8f-8e01-ef936f009a76
+      body:
+        # Secret Declarations
+        - &secrets4
+          - !variable sodium--d0dbe2fc-d60f-4d24-bf16-93d9b42e8ba9
+          - !variable potassium--83b0e651-2bec-4694-8874-d23941728cc8
+          - !variable rubidium--84cd0fe1-1920-4181-9272-55daa41ee944
+        
+        # User & Manager Groups
+        - !group secrets-users
+        - !group secrets-managers
+        - !permit
+          role: !group secrets-users
+          privileges: [ read, execute ]
+          resources: *secrets4
+        - !permit
+          role: !group secrets-managers
+          privileges: [ read, execute, update ]
+          resources: *secrets4
