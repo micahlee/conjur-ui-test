@@ -1,4 +1,6 @@
 #!/bin/bash -eu
 
+docker-compose up -d
+
 # Configure Master
 docker-compose exec -T master bash -c "evoke configure master -h master -p secret micah"

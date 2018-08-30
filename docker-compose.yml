@@ -9,6 +9,7 @@ services:
     volumes:
       - certs:/opt/conjur/etc/ssl
       - ./data:/data
+      # Update the left-hand side of these mappings to point to your local Conjur UI repo
       - ~/projects/conjurinc/conjur-ui/public:/opt/conjur/ui/public
       - ~/projects/conjurinc/conjur-ui/distrib/nginx/80_ui.conf:/etc/conjur/nginx.d/80_ui.conf
   
